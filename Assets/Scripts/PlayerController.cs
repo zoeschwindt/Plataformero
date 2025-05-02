@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public float turnTime = 0.2f;
     public float jumpHieght = 3;
     public float jumpForce = -2;
+    public int life = 100;
 
     public Transform floor;
     public float floorDistance = 0.1f;
@@ -118,5 +119,13 @@ public class PlayerController : MonoBehaviour
             // más botellas disponibles.
             canDoubleJump = true;
         }
+    }
+    public void ReceiveDamage()
+    {
+        life -= 50;
+    }
+    public void ReceiveMissile(int damage)
+    {
+        life -= damage;
     }
 }
