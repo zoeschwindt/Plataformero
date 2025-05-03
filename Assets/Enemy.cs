@@ -7,12 +7,12 @@ public class Enemy : MonoBehaviour
     // Cambiado de OnCollisionEnter a OnTriggerEnter
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            PlayerController player = other.gameObject.GetComponent<PlayerController>();
+            PlayerController player = other.GetComponent<PlayerController>();
             if (player != null)
             {
-                player.ReceiveMissile(damage);  // Llama a ReceiveMissile con el daño de este enemigo
+                player.ReceiveMissile(damage);
             }
         }
     }
