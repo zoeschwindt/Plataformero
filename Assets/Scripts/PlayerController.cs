@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Video;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public int maxExtraJumps = 3; // Puedes aumentar este valor si deseas más saltos dobles.
     private bool canDoubleJump = false;
 
+    public GameObject losePanel;
     public float speedMovement;
     public float turnTime = 0.2f;
     public float jumpHieght = 3;
@@ -48,6 +50,7 @@ public class PlayerController : MonoBehaviour
         Jump();
         HandleDoubleJump();
         anim.SetFloat("velocityY", velocity.y);
+        Die();
     }
 
     private void Walk()
@@ -130,9 +133,24 @@ public class PlayerController : MonoBehaviour
     public void ReceiveDamage()
     {
         life -= 50;
+        Life.Instance.updateLife();
     }
     public void ReceiveMissile(int damage)
     {
         life -= damage;
+        Life.Instance.updateLife();
+    }
+    private void Die()
+    {
+        if (life <= 0)
+        {
+            gameObject.SetActive(false); // desactiva al jugador
+            if (losePanel != null)
+            {
+                losePanel.SetActive(true); // muestra el panel de "perdiste"
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+        }
     }
 }
