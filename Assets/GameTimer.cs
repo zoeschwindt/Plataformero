@@ -6,9 +6,10 @@ public class GameTimer : MonoBehaviour
     public float gameTime = 60f;
     private float currentTime;
 
-    public GameObject losePanel;
+    public GameObject PanelPerdiste; // Panel de derrota
+    public GameObject Victory;       // Panel de victoria
     public PlayerController playerController;
-    public TextMeshProUGUI timerText; // Texto con TextMeshProUGUI
+    public TextMeshProUGUI timerText;
 
     void Start()
     {
@@ -17,6 +18,12 @@ public class GameTimer : MonoBehaviour
 
     void Update()
     {
+        // Si alguno de los paneles está activo, detener el tiempo
+        if ((PanelPerdiste != null && PanelPerdiste.activeSelf) || (Victory != null && Victory.activeSelf))
+        {
+            return;
+        }
+
         if (currentTime > 0)
         {
             currentTime -= Time.deltaTime;
@@ -27,9 +34,9 @@ public class GameTimer : MonoBehaviour
             currentTime = 0;
             UpdateTimerUI();
 
-            if (losePanel != null && !losePanel.activeSelf)
+            if (PanelPerdiste != null && !PanelPerdiste.activeSelf)
             {
-                losePanel.SetActive(true);
+                PanelPerdiste.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
 
