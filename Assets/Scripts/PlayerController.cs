@@ -23,14 +23,12 @@ public class PlayerController : MonoBehaviour
     public Transform floor;
     public float floorDistance = 0.1f;
     public LayerMask layerFloor;
-
-    private ScoreManager scoreManager;
+    [SerializeField] private Transform pointToSpawn;
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
-        scoreManager = ScoreManager.instance;
     }
 
     public void ActivateDoubleJump()
@@ -44,6 +42,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (!controller.enabled) return;
+
         Walk();
         Jump();
         HandleDoubleJump();
@@ -101,9 +101,9 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("jump2");
             extraJumps--;  // Usar un salto doble disponible
 
-            if (scoreManager != null && scoreManager.score > 0)
+            if (ScoreManager.instance.score > 0)
             {
-                scoreManager.RemovePoint();
+                ScoreManager.instance.RemovePoint();
             }
 
             // Si no hay saltos dobles restantes, desactivar el flag de salto doble.
@@ -119,6 +119,13 @@ public class PlayerController : MonoBehaviour
             // más botellas disponibles.
             canDoubleJump = true;
         }
+    }
+    public void Respawn()
+    {
+        controller.enabled = false;
+        transform.position = pointToSpawn.position;
+        controller.enabled = true;
+
     }
     public void ReceiveDamage()
     {

@@ -25,12 +25,12 @@ public class ScoreManager : MonoBehaviour
         if (score > 0)
         {
             score--;
-            scoreText.text = "" + score.ToString();
+            scoreText.text = score.ToString();
         }
     }
     public void AddPoint()
     {
         score++;
-        scoreText.text = "" + score.ToString();
+        scoreText.text = score.ToString();
     }
 }
