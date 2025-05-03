@@ -17,6 +17,12 @@ public class Life : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if(PlayerPrefs.GetFloat("X") == 0 && PlayerPrefs.GetFloat("Y") == 0 && PlayerPrefs.GetFloat("Z") == 0)
+        {
+            PlayerPrefs.SetFloat("X", -33.59f);
+            PlayerPrefs.SetFloat("Y", 2.544f);
+            PlayerPrefs.SetFloat("Z", -16.22f);
+        }
 
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }

@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        transform.position = new Vector3(PlayerPrefs.GetFloat("X"), PlayerPrefs.GetFloat("Y"), PlayerPrefs.GetFloat("Z"));
+
+
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
     }
