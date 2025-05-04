@@ -15,7 +15,8 @@ public class PlayerController : MonoBehaviour
     public int maxExtraJumps = 3; // Puedes aumentar este valor si deseas más saltos dobles.
     private bool canDoubleJump = false;
 
-
+    public LayerMask wallLayer;
+    public bool isWallGrip;
 
     public GameObject losePanel;
     public float speedMovement;
@@ -50,7 +51,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if (!controller.enabled) return;
-
+        WallGrip();
         Walk();
         Jump();
         HandleDoubleJump();
@@ -96,11 +97,25 @@ public class PlayerController : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHieght * jumpForce * gravity);
             anim.SetBool("isJumping", true);
         }
+        if (!isWallGrip)
+        {
+            velocity.y += gravity * Time.deltaTime;
 
-        velocity.y += gravity * Time.deltaTime;
+        }
         controller.Move(velocity * Time.deltaTime);
     }
 
+    private void WallGrip()
+    {
+        if (Physics.CheckSphere(transform.position, 0.5f, wallLayer))
+        {
+            isWallGrip = true;
+        }
+        else
+        {
+            isWallGrip = false;
+        }
+    }
     private void HandleDoubleJump()
     {
         if (canDoubleJump && !inFloor && Input.GetKeyDown(KeyCode.X) && extraJumps > 0)

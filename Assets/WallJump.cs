@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WallJump : MonoBehaviour
@@ -14,16 +15,14 @@ public class WallJump : MonoBehaviour
         controller = GetComponent<CharacterController>();
         playerController = GetComponent<PlayerController>();
     }
-
+    
     void Update()
     {
-        // Revisar si está tocando una pared lateral
-        bool touchingWallLeft = Physics.Raycast(transform.position, -transform.right, wallCheckDistance, wallLayer);
-        bool touchingWallRight = Physics.Raycast(transform.position, transform.right, wallCheckDistance, wallLayer);
-        bool isTouchingWall = touchingWallLeft || touchingWallRight;
+        
+        bool isTouchingWall = Physics.CheckSphere(transform.position, wallCheckDistance, wallLayer);
 
         // Si está tocando una pared, no está en el piso, y está cayendo...
-        if (isTouchingWall && !playerController.inFloor && playerController.velocity.y < 0)
+        if (isTouchingWall && !playerController.inFloor )
         {
             // Frena la caída (se queda "pegado")
             playerController.velocity.y = wallSlideSpeed;
