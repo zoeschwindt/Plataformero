@@ -6,14 +6,16 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Animator anim;
     private float turnVelocity;
-    private Vector3 velocity;
+    [HideInInspector] public Vector3 velocity;
     private float gravity = -9.8f;
-    private bool inFloor;
+    [HideInInspector] public bool inFloor;
 
     public float doubleJumpHeightMultiplier = 1.5f;
     private int extraJumps;
     public int maxExtraJumps = 3; // Puedes aumentar este valor si deseas más saltos dobles.
     private bool canDoubleJump = false;
+
+
 
     public GameObject losePanel;
     public float speedMovement;
