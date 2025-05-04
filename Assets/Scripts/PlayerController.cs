@@ -159,6 +159,12 @@ public class PlayerController : MonoBehaviour
     {
         life -= damage;
         Life.Instance.updateLife();
+
+        // Respawn en el checkpoint si aún tiene vida
+        if (life > 0)
+        {
+            Respawn();
+        }
     }
     private void Die()
     {
