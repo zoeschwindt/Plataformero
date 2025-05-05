@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int damage = 20;  // Daño que hace este enemigo
+    public int damage = 20;  
 
-    // Cambiado de OnCollisionEnter a OnTriggerEnter
+ 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

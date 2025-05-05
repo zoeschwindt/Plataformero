@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class MoverArribaAbajo : MonoBehaviour
 {
-    public float velocidad = 2f;     // Velocidad del movimiento
-    public float distancia = 2f;     // Distancia total de ida y vuelta
+    public float velocidad = 2f;     
+    public float distancia = 2f;    
 
     private Vector3 posicionInicial;
 

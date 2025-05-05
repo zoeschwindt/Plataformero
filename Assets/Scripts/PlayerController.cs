@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     public float doubleJumpHeightMultiplier = 1.5f;
     private int extraJumps;
-    public int maxExtraJumps = 3; // Puedes aumentar este valor si deseas más saltos dobles.
+    public int maxExtraJumps = 3; 
     private bool canDoubleJump = false;
 
     public LayerMask wallLayer;
@@ -41,10 +41,10 @@ public class PlayerController : MonoBehaviour
 
     public void ActivateDoubleJump()
     {
-        // Si el jugador no tiene saltos dobles disponibles, habilítalos.
+       
         if (extraJumps < maxExtraJumps)
         {
-            extraJumps++;  // Aumenta la cantidad de saltos dobles disponibles
+            extraJumps++;  
         }
     }
 
@@ -122,14 +122,14 @@ public class PlayerController : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHieght * -2f * gravity) * doubleJumpHeightMultiplier;
             anim.SetTrigger("jump2");
-            extraJumps--;  // Usar un salto doble disponible
+            extraJumps--; 
 
             if (ScoreManager.instance.score > 0)
             {
                 ScoreManager.instance.RemovePoint();
             }
 
-            // Si no hay saltos dobles restantes, desactivar el flag de salto doble.
+          
             if (extraJumps == 0)
             {
                 canDoubleJump = false;
@@ -138,8 +138,8 @@ public class PlayerController : MonoBehaviour
 
         if (inFloor)
         {
-            // Cuando el jugador toca el suelo, puede usar los saltos dobles nuevamente si tiene
-            // más botellas disponibles.
+          
+     
             canDoubleJump = true;
         }
     }
@@ -160,7 +160,7 @@ public class PlayerController : MonoBehaviour
         life -= damage;
         Life.Instance.updateLife();
 
-        // Respawn en el checkpoint si aún tiene vida
+        
         if (life > 0)
         {
             Respawn();
@@ -170,10 +170,10 @@ public class PlayerController : MonoBehaviour
     {
         if (life <= 0)
         {
-            gameObject.SetActive(false); // desactiva al jugador
+            gameObject.SetActive(false); 
             if (losePanel != null)
             {
-                losePanel.SetActive(true); // muestra el panel de "perdiste"
+                losePanel.SetActive(true); 
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }

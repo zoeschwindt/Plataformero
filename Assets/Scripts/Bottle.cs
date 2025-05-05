@@ -9,11 +9,11 @@ public class Bottle : MonoBehaviour
             PlayerController player = other.GetComponent<PlayerController>();
             if (player != null)
             {
-                player.ActivateDoubleJump();  // Activa un salto doble cada vez que se recoge una botella
-                ScoreManager.instance.AddPoint(); // Suma un punto al puntaje
+                player.ActivateDoubleJump(); 
+                ScoreManager.instance.AddPoint(); 
             }
 
-            Destroy(gameObject);  // Destruye la botella
+            Destroy(gameObject);  
         }
     }
 }

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class MoverDerechaIzquierda : MonoBehaviour
 {
-    public float velocidad = 2f;     // Qué tan rápido se mueve
-    public float distancia = 2f;     // Cuánto se mueve de un lado a otro
+    public float velocidad = 2f;    
+    public float distancia = 2f;     
 
     private Vector3 posicionInicial;
 

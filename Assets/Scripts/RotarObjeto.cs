@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class RotarObjeto : MonoBehaviour
 {
-    public Vector3 ejeRotacion = new Vector3(0, 1, 0); // Eje Y por defecto
-    public float velocidadRotacion = 45f; // Grados por segundo
+    public Vector3 ejeRotacion = new Vector3(0, 1, 0); 
+    public float velocidadRotacion = 45f; 
 
     void Update()
     {

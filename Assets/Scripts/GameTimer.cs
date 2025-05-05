@@ -6,8 +6,8 @@ public class GameTimer : MonoBehaviour
     public float gameTime = 60f;
     private float currentTime;
 
-    public GameObject PanelPerdiste; // Panel de derrota
-    public GameObject Victory;       // Panel de victoria
+    public GameObject PanelPerdiste; 
+    public GameObject Victory;       
     public PlayerController playerController;
     public TextMeshProUGUI timerText;
 
@@ -18,7 +18,7 @@ public class GameTimer : MonoBehaviour
 
     void Update()
     {
-        // Si alguno de los paneles está activo, detener el tiempo
+       
         if ((PanelPerdiste != null && PanelPerdiste.activeSelf) || (Victory != null && Victory.activeSelf))
         {
             return;
@@ -50,7 +50,7 @@ public class GameTimer : MonoBehaviour
     {
         int minutes = Mathf.FloorToInt(currentTime / 60);
         int seconds = Mathf.FloorToInt(currentTime % 60);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timerText.text = string.Format("{0:0}:{1:00}", minutes, seconds);
     }
 }
 

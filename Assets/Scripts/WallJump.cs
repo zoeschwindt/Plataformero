@@ -21,10 +21,10 @@ public class WallJump : MonoBehaviour
         
         bool isTouchingWall = Physics.CheckSphere(transform.position, wallCheckDistance, wallLayer);
 
-        // Si está tocando una pared, no está en el piso, y está cayendo...
+      
         if (isTouchingWall && !playerController.inFloor )
         {
-            // Frena la caída (se queda "pegado")
+            
             playerController.velocity.y = wallSlideSpeed;
         }
     }

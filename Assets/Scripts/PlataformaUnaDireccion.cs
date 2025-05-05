@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlataformaUnaDireccion : MonoBehaviour
 {
-    public Transform puntoA; // Primer punto (inicio)
-    public Transform puntoB; // Segundo punto (destino)
+    public Transform puntoA;
+    public Transform puntoB; 
     public float velocidad = 2f;
 
     private Vector3 objetivoActual;
@@ -19,7 +19,7 @@ public class PlataformaUnaDireccion : MonoBehaviour
 
         if (Vector3.Distance(transform.position, objetivoActual) < 0.01f)
         {
-            // Cambia el objetivo al llegar
+            
             objetivoActual = (objetivoActual == puntoA.position) ? puntoB.position : puntoA.position;
         }
     }

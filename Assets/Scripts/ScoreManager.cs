@@ -6,11 +6,11 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
 
     public int score = 0;
-    public TMP_Text scoreText;  // Ahora compatible con TextMeshPro
+    public TMP_Text scoreText;  
 
     private void Awake()
     {
-        // Asegura que haya una sola instancia (singleton)
+       
         if (instance == null)
         {
             instance = this;
